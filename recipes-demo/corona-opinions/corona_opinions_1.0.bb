@@ -13,6 +13,11 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464"
 
 PROVIDES = "blablabla"
 
+# To add our package to the images, we also need to satisfy RPROVIDES. Otherwise you will find that 
+# ERROR: Nothing RPROVIDES 'blablabla' (but /home/ubuntu/Tutorials/poky-zeus-22.0.2/meta/recipes-core/images/core-image-minimal.bb RDEPENDS on or otherwise requires it)
+# So we do exactly that (again, the name can be completely arbitary, while needless to say, it is a very bad practice to do so)
+RPROVIDES = "blablabla-rprovides-workaround"
+
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}-${PV}:"
 
 # IMPORTANT caveat: this is NOT how you use git. You MUST provide the git:// prefix
